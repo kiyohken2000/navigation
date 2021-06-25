@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/drawer'
 import DrawerMenu from './DrawerMenu'
 import TabNavigator from '../tabs'
+import TopTabNavigator from '../toptabs/TopTabs'
 
 const Drawer = createDrawerNavigator()
 
@@ -23,7 +24,7 @@ const DrawerMenuContainer = (props) => {
 
 const DrawerNavigator = () => (
   <Drawer.Navigator initialRouteName="Home" drawerContent={DrawerMenuContainer}>
-    <Drawer.Screen name="Home" component={TabNavigator} />
+    <Drawer.Screen name="Home" component={TopTabNavigator} />
   </Drawer.Navigator>
 )
 
