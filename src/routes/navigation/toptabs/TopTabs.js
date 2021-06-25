@@ -21,18 +21,7 @@ const navigationProps = {
 const TopTabNavigator = () => (
   <>
   <Tab.Navigator
-    tabBarOptions={{
-      activeTintColor: colors.lightPurple,
-      inactiveTintColor: colors.gray,
-      style: {
-        marginTop: Platform.select({
-          ios: 50,
-          android: 0,
-        }),
-      },
-    }}
     initialRouteName="Home"
-    swipeEnabled={false}
   >
     <Tab.Screen
       name="Home"

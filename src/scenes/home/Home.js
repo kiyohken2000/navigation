@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
 
 const Home = ({ navigation }) => (
   <View style={styles.root}>
-    <StatusBar barStyle="light-content" />
     <Text style={styles.title}>Home</Text>
     <Button
       title="Go to Details"

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { View } from 'react-native'
+import { View, SafeAreaView } from 'react-native'
 import { Provider } from 'react-redux'
 import store from 'utils/store'
 import 'utils/ignore'
+import { StatusBar } from 'expo-status-bar'
+import { colors } from './theme'
 
 // assets
 import { imageAssets } from 'theme/images'
@@ -28,9 +30,13 @@ const App = () => {
   // rendering
   if (!didLoad) return <View />
   return (
+    <>
+    <SafeAreaView style={{ backgroundColor: colors.darkPurple }} />
+    <StatusBar/>
     <Provider store={store}>
       <Router />
     </Provider>
+    </>
   )
 }
 

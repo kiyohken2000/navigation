@@ -23,7 +23,17 @@ const DrawerMenuContainer = (props) => {
 }
 
 const DrawerNavigator = () => (
-  <Drawer.Navigator initialRouteName="Home" drawerContent={DrawerMenuContainer}>
+  <Drawer.Navigator
+    initialRouteName="Home"
+    overlayColor="transparent"
+    screenOptions={{
+      headerShown: true
+    }}
+    drawerContent={DrawerMenuContainer}
+    drawerStyle={{
+      // backgroundColor: 'black',
+    }}
+  >
     <Drawer.Screen name="Home" component={TopTabNavigator} />
   </Drawer.Navigator>
 )
