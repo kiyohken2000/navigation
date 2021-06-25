@@ -1,12 +1,12 @@
 import React from 'react'
 import { colors } from 'theme'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import FontIcon from 'react-native-vector-icons/FontAwesome5'
 
 // stack navigators
 import {
   HomeNavigator,
   ProfileNavigator,
-  FeedNavigator,
   MonthlyNavigator,
   WeeklyNavigator,
   DailyNavigator
