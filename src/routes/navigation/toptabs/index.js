@@ -1,3 +1,11 @@
-import TopTabs from './TopTabs'
+import {
+  TopTabNavigator,
+  NewsNavigator,
+  DaysNavigator
+} from './TopTabs'
 
-export default TopTabs
+export {
+  TopTabNavigator,
+  NewsNavigator,
+  DaysNavigator
+}

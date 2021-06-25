@@ -1,46 +1,57 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {
-  StyleSheet, Text, View, StatusBar,
-} from 'react-native'
-import Button from 'components/Button'
-import { colors } from 'theme'
+import React, { useEffect, useState, useCallback } from 'react'
+import { Text, View, TouchableOpacity, ScrollView, StatusBar, useColorScheme, Dimensions } from 'react-native'
+import styles from './styles'
+import BottomSheet from 'reanimated-bottom-sheet'
+import Sheet from './Sheet'
+import axios from 'axios'
+import { Divider } from 'react-native-elements'
 
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.lightGrayPurple,
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-})
+export default function Profile(props) {
+  const height = Dimensions.get('window').height
+  const sheetRef = React.useRef(null)
+  const [posts, setPosts] = useState([])
+  const [post, setPost] = useState('')
 
-const Profile = ({ navigation }) => (
-  <View style={styles.root}>
-    <StatusBar barStyle="light-content" />
-    <Text style={styles.title}>Profile</Text>
-    <Button
-      title="Go to Details"
-      color="white"
-      backgroundColor={colors.lightPurple}
-      onPress={() => {
-        navigation.navigate('Details', { from: 'Profile' })
-      }}
+  useEffect(() => {
+   const fetchData = async () => {
+      const result = await axios('https://jsonplaceholder.typicode.com/posts')
+      setPosts(result.data)
+    }
+    fetchData();
+  }, []);
+
+  function openSheet(d) {
+    setPost(d)
+    sheetRef.current.snapTo(0)
+  }
+
+  return (
+    <>
+    <View style={styles.container}>
+      <View style={{ flex: 1, width: '100%' }}>
+        <ScrollView>
+          {
+            posts.map((post, i) => {
+              return (
+                <View key={i}>
+                  <TouchableOpacity onPress={() => openSheet(post)} >
+                    <Text style={styles.title}>{post.title}</Text>
+                  </TouchableOpacity>
+                  <Divider />
+                </View>
+              )
+            })
+          }
+        </ScrollView>
+      </View>
+    </View>
+    <BottomSheet
+      ref={sheetRef}
+      snapPoints={[height*0.83, 0]}
+      initialSnap={1}
+      borderRadius={30}
+      renderContent={() => <Sheet data={post}/>}
     />
-  </View>
-)
-
-Profile.propTypes = {
-  navigation: PropTypes.shape({ navigate: PropTypes.func }),
+    </>
+  )
 }
-
-Profile.defaultProps = {
-  navigation: { navigate: () => null },
-}
-
-export default Profile

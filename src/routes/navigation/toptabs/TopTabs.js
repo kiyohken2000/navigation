@@ -1,25 +1,20 @@
 import React from 'react'
-import { View, Platform } from 'react-native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import { colors } from 'theme'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import HeaderLeft from './HeaderLeft'
-import HeaderTitle from './HeaderTitle'
 
 // stack navigators
-import { HomeNavigator, ProfileNavigator } from '../stacks'
+import {
+  HomeNavigator,
+  ProfileNavigator,
+  FeedNavigator,
+  MonthlyNavigator,
+  WeeklyNavigator,
+  DailyNavigator
+} from '../stacks'
 
 const Tab = createMaterialTopTabNavigator()
 
-const navigationProps = {
-  headerTintColor: 'white',
-  headerStyle: { backgroundColor: colors.darkPurple },
-  headerTitleStyle: { fontSize: 18 },
-}
-
-const TopTabNavigator = () => (
-  <>
+export const TopTabNavigator = () => (
   <Tab.Navigator
     initialRouteName="Home"
   >
@@ -32,7 +27,23 @@ const TopTabNavigator = () => (
       component={ProfileNavigator}
     />
   </Tab.Navigator>
-  </>
 )
 
-export default TopTabNavigator
+export const DaysNavigator = () => (
+  <Tab.Navigator
+    initialRouteName="Daily"
+  >
+    <Tab.Screen
+      name="Daily"
+      component={DailyNavigator}
+    />
+    <Tab.Screen
+      name="Weekly"
+      component={WeeklyNavigator}
+    />
+    <Tab.Screen
+      name="Monthly"
+      component={MonthlyNavigator}
+    />
+  </Tab.Navigator>
+)

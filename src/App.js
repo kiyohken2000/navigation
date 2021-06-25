@@ -31,8 +31,6 @@ const App = () => {
   if (!didLoad) return <View />
   return (
     <>
-    <SafeAreaView style={{ backgroundColor: colors.darkPurple }} />
-    <StatusBar/>
     <Provider store={store}>
       <Router />
     </Provider>

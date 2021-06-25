@@ -6,6 +6,12 @@ import Profile from 'scenes/profile'
 import Details from 'scenes/details'
 import HeaderLeft from './HeaderLeft'
 import HeaderTitle from './HeaderTitle'
+import Feed from 'scenes/feed'
+import Article from 'scenes/article'
+import Settings from 'scenes/settings'
+import Daily from 'scenes/daily'
+import Weekly from 'scenes/weekly'
+import Monthly from 'scenes/monthly'
 
 // ------------------------------------
 // Constants
@@ -35,17 +41,6 @@ export const HomeNavigator = () => (
       component={Home}
       options={({ navigation }) => ({
         title: 'Home',
-        headerLeft: () => <HeaderLeft navigation={navigation} />,
-        headerTitle: () => <HeaderTitle />,
-      })}
-    />
-    <Stack.Screen
-      name="Details"
-      component={Details}
-      options={({ navigation }) => ({
-        title: 'Home',
-        headerLeft: () => <HeaderLeft navigation={navigation} />,
-        headerTitle: () => <HeaderTitle />,
       })}
     />
   </Stack.Navigator>
@@ -62,16 +57,94 @@ export const ProfileNavigator = () => (
       component={Profile}
       options={({ navigation }) => ({
         title: 'Profile',
-        headerLeft: () => <HeaderLeft navigation={navigation} />,
-        headerTitle: () => <HeaderTitle />,
+      })}
+    />
+  </Stack.Navigator>
+)
+
+export const FeedNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="Feed"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="Feed"
+      component={Feed}
+      options={({ navigation }) => ({
+        title: 'Feed',
       })}
     />
     <Stack.Screen
-      name="Details"
-      component={Details}
-      options={{
-        title: 'Details',
-      }}
+      name="Article"
+      component={Article}
+      options={({ navigation }) => ({
+        title: 'Article',
+      })}
+    />
+  </Stack.Navigator>
+)
+
+export const SettingsNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="Settings"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="Settings"
+      component={Settings}
+      options={({ navigation }) => ({
+        title: 'Settings',
+      })}
+    />
+  </Stack.Navigator>
+)
+
+export const MonthlyNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="Monthly"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="Monthly"
+      component={Monthly}
+      options={({ navigation }) => ({
+        title: 'Monthly',
+      })}
+    />
+  </Stack.Navigator>
+)
+
+export const WeeklyNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="Weekly"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="Weekly"
+      component={Weekly}
+      options={({ navigation }) => ({
+        title: 'Weekly',
+      })}
+    />
+  </Stack.Navigator>
+)
+
+export const DailyNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="Daily"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="Daily"
+      component={Daily}
+      options={({ navigation }) => ({
+        title: 'Daily',
+      })}
     />
   </Stack.Navigator>
 )

@@ -1,47 +1,59 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {
-  StyleSheet, Text, View, StatusBar,
-} from 'react-native'
-import Button from 'components/Button'
-import { colors } from 'theme'
+import React, { useEffect, useState, useCallback } from 'react'
+import { Text, View, TouchableOpacity, ScrollView, StatusBar, useColorScheme, Dimensions } from 'react-native'
+import styles from './styles'
+import BottomSheet from 'reanimated-bottom-sheet'
+import Sheet from './Sheet'
+import axios from 'axios'
+import { Divider } from 'react-native-elements'
 
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.lightGrayPurple,
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-})
+export default function Home(props) {
+  const height = Dimensions.get('window').height
+  const sheetRef = React.useRef(null)
+  const [data, setData] = useState([])
+  const [person, setPerson] = useState('')
 
-const Home = ({ navigation }) => (
-  <View style={styles.root}>
-    <Text style={styles.title}>Home</Text>
-    <Button
-      title="Go to Details"
-      color="white"
-      backgroundColor={colors.lightPurple}
-      onPress={() => {
-        navigation.navigate('Details', { from: 'Home' })
-      }}
+  useEffect(() => {
+   const fetchData = async () => {
+      const result = await axios('https://jsonplaceholder.typicode.com/users')
+      setData(result.data)
+    }
+    fetchData();
+  }, []);
+
+  function openSheet(d) {
+    setPerson(d)
+    sheetRef.current.snapTo(0)
+  }
+
+  return (
+    <>
+    <View style={styles.container}>
+      <View style={{ flex: 1, width: '100%' }}>
+        <ScrollView>
+          {
+            data.map((person, i) => {
+              return (
+                <View key={i}>
+                  <TouchableOpacity onPress={() => openSheet(person)} >
+                    <Text style={styles.title}>{person.name}</Text>
+                    <Text style={styles.field}>{person.email}</Text>
+                    <Text style={styles.field}>{person.company.name}</Text>
+                  </TouchableOpacity>
+                  <Divider />
+                </View>
+              )
+            })
+          }
+        </ScrollView>
+      </View>
+    </View>
+    <BottomSheet
+      ref={sheetRef}
+      snapPoints={[height*0.83, 0]}
+      initialSnap={1}
+      borderRadius={30}
+      renderContent={() => <Sheet data={person}/>}
     />
-  </View>
-)
-
-Home.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func,
-  }),
+    </>
+  )
 }
-
-Home.defaultProps = {
-  navigation: { navigate: () => null },
-}
-
-export default Home
