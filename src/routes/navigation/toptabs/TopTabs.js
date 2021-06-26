@@ -19,10 +19,12 @@ export const TopTabNavigator = () => (
     <Tab.Screen
       name="Representatives"
       component={RepresentativesNavigator}
+      options={{ tabBarLabel: 'toptab 1' }}
     />
     <Tab.Screen
       name="Councilors"
       component={CouncilorsNavigator}
+      options={{ tabBarLabel: 'toptab 2' }}
     />
   </Tab.Navigator>
 )
