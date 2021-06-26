@@ -33,8 +33,17 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 16
   },
+  footerView: {
+    alignItems: "center",
+    marginTop: 20
+  },
+  footerLink: {
+    color: "#788eec",
+    fontWeight: "bold",
+    fontSize: 16
+  },
   modalView: {
-    height: height*0.5,
+    height: height*0.52,
     width: width*0.9,
     backgroundColor: "white",
     opacity: 0.99,

@@ -5,7 +5,7 @@ import BottomSheet from 'reanimated-bottom-sheet'
 import Sheet from './Sheet'
 import axios from 'axios'
 import { Divider } from 'react-native-elements'
-import { UserCount } from '../../routes/navigation/drawer/Drawer'
+import { Filter } from '../../routes/navigation/drawer/Drawer'
 import Modal from 'react-native-modal'
 import { BlurView } from 'expo-blur'
 import RNPickerSelect from 'react-native-picker-select'
@@ -19,7 +19,7 @@ export default function Home(props) {
   const [sport, setSport] = useState('')
   const [food, setFood] = useState('')
   const [color, setColor] = useState('')
-  const { isModal, setModal } = useContext(UserCount)
+  const { isModal, setModal } = useContext(Filter)
 
   useEffect(() => {
    const fetchData = async () => {
@@ -32,6 +32,13 @@ export default function Home(props) {
   function openSheet(d) {
     setPerson(d)
     sheetRef.current.snapTo(0)
+  }
+
+  function clearFilter() {
+    setSport('')
+    setFood('')
+    setColor('')
+    setModal(false)
   }
 
   return (
@@ -65,12 +72,13 @@ export default function Home(props) {
     />
     <Modal
       isVisible={isModal}
-      backdropOpacity={0.15}
+      backdropOpacity={0.1}
     >
       <View style={styles.centeredView}>
         <BlurView intensity={95} >
           <View style={styles.modalView}>
             <Text style={styles.title}>Content Filter</Text>
+            <ScrollView style={{width:'100%'}}>
             <View style={{ width: '100%', marginTop: 20 }}>
               <Text style={styles.field}>Sport: {sport}</Text>
               <RNPickerSelect
@@ -97,11 +105,15 @@ export default function Home(props) {
                 placeholder={{ label: 'Select a Colors', value: '' }}
               />
             </View>
-            <View style={{ width: '100%', position: 'absolute', bottom: 20 }}>
+            <View style={{ width: '100%', marginBottom: 20 }}>
               <TouchableOpacity style={styles.button} onPress={() => setModal(false)} >
                 <Text style={styles.buttonText}>Apply</Text>
               </TouchableOpacity>
+              <TouchableOpacity style={styles.footerView} onPress={() => clearFilter()} >
+                <Text style={styles.footerLink}>Clear</Text>
+              </TouchableOpacity>
             </View>
+            </ScrollView>
           </View>
         </BlurView>
       </View>

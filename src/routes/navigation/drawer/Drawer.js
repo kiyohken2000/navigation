@@ -13,7 +13,7 @@ import { FeedNavigator, SettingsNavigator } from '../stacks'
 import { colors } from 'theme'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 
-export const UserCount = React.createContext();
+export const Filter = React.createContext();
 
 const Drawer = createDrawerNavigator()
 
@@ -32,7 +32,7 @@ const DrawerNavigator = () => {
   const [isModal, setModal] = useState(false)
   const value = { isModal, setModal }
   return (
-    <UserCount.Provider value={value}>
+    <Filter.Provider value={value}>
     <Drawer.Navigator
       initialRouteName="Home"
       overlayColor="transparent"
@@ -49,7 +49,7 @@ const DrawerNavigator = () => {
       }}
     >
       <Drawer.Screen name="Home" component={TopTabNavigator}
-        options={({ navigation, route }) => ({
+        options={{
           title: 'Home',
           drawerIcon: ({focused, size}) => (
             <FontIcon
@@ -67,7 +67,7 @@ const DrawerNavigator = () => {
               style={{marginRight:20}}
             />
           ),
-        })}
+        }}
       />
       <Drawer.Screen name="Feed" component={FeedNavigator}
         options={{
@@ -106,7 +106,7 @@ const DrawerNavigator = () => {
         }}
       />
     </Drawer.Navigator>
-    </UserCount.Provider>
+    </Filter.Provider>
   )}
 
 export default DrawerNavigator
