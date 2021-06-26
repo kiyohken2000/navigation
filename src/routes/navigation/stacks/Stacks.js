@@ -1,11 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { colors } from 'theme'
-import Home from 'scenes/home'
-import Profile from 'scenes/profile'
+import Representatives from 'scenes/representatives'
+import Councilors from 'scenes/councilors'
 import Details from 'scenes/details'
-import HeaderLeft from './HeaderLeft'
-import HeaderTitle from './HeaderTitle'
 import Feed from 'scenes/feed'
 import Article from 'scenes/article'
 import Settings from 'scenes/settings'
@@ -30,33 +28,33 @@ const navigationProps = {
 // Navigators
 // ------------------------------------
 
-export const HomeNavigator = () => (
+export const RepresentativesNavigator = () => (
   <Stack.Navigator
-    initialRouteName="Home"
+    initialRouteName="Representatives"
     headerMode="screen"
     screenOptions={navigationProps}
   >
     <Stack.Screen
-      name="Home"
-      component={Home}
+      name="Representatives"
+      component={Representatives}
       options={({ navigation }) => ({
-        title: 'Home',
+        title: 'Representatives',
       })}
     />
   </Stack.Navigator>
 )
 
-export const ProfileNavigator = () => (
+export const CouncilorsNavigator = () => (
   <Stack.Navigator
-    initialRouteName="Profile"
+    initialRouteName="Councilors"
     headerMode="screen"
     screenOptions={navigationProps}
   >
     <Stack.Screen
-      name="Profile"
-      component={Profile}
+      name="Councilors"
+      component={Councilors}
       options={({ navigation }) => ({
-        title: 'Profile',
+        title: 'Councilors',
       })}
     />
   </Stack.Navigator>

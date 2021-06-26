@@ -1,12 +1,10 @@
 import React from 'react'
-import { colors } from 'theme'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import FontIcon from 'react-native-vector-icons/FontAwesome5'
 
 // stack navigators
 import {
-  HomeNavigator,
-  ProfileNavigator,
+  RepresentativesNavigator,
+  CouncilorsNavigator,
   MonthlyNavigator,
   WeeklyNavigator,
   DailyNavigator
@@ -16,15 +14,15 @@ const Tab = createMaterialTopTabNavigator()
 
 export const TopTabNavigator = () => (
   <Tab.Navigator
-    initialRouteName="Home"
+    initialRouteName="Representatives"
   >
     <Tab.Screen
-      name="Home"
-      component={HomeNavigator}
+      name="Representatives"
+      component={RepresentativesNavigator}
     />
     <Tab.Screen
-      name="Profile"
-      component={ProfileNavigator}
+      name="Councilors"
+      component={CouncilorsNavigator}
     />
   </Tab.Navigator>
 )

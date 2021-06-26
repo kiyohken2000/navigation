@@ -1,6 +1,6 @@
 import { 
-  HomeNavigator,
-  ProfileNavigator,
+  RepresentativesNavigator,
+  CouncilorsNavigator,
   FeedNavigator,
   SettingsNavigator,
   MonthlyNavigator,
@@ -9,8 +9,8 @@ import {
  } from './Stacks'
 
 export {
-  HomeNavigator,
-  ProfileNavigator,
+  RepresentativesNavigator,
+  CouncilorsNavigator,
   FeedNavigator,
   SettingsNavigator,
   MonthlyNavigator,

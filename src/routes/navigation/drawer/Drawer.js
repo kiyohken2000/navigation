@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useContext } from 'react'
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -12,8 +12,7 @@ import {
 import { FeedNavigator, SettingsNavigator } from '../stacks'
 import { colors } from 'theme'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
-
-export const Filter = React.createContext();
+import { Global } from '../Navigation'
 
 const Drawer = createDrawerNavigator()
 
@@ -29,10 +28,8 @@ const DrawerMenuContainer = (props) => {
 }
 
 const DrawerNavigator = () => {
-  const [isModal, setModal] = useState(false)
-  const value = { isModal, setModal }
+  const { isFilter, setFilter } = useContext(Global)
   return (
-    <Filter.Provider value={value}>
     <Drawer.Navigator
       initialRouteName="Home"
       overlayColor="transparent"
@@ -60,7 +57,7 @@ const DrawerNavigator = () => {
           ),
           headerRight: () => (
             <FontIcon
-              onPress={() => setModal(!isModal)}
+              onPress={() => setFilter(!isFilter)}
               name="sliders-h"
               color="#fff"
               size={20}
@@ -106,7 +103,6 @@ const DrawerNavigator = () => {
         }}
       />
     </Drawer.Navigator>
-    </Filter.Provider>
   )}
 
 export default DrawerNavigator

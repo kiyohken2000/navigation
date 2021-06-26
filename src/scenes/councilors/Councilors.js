@@ -6,7 +6,7 @@ import Sheet from './Sheet'
 import axios from 'axios'
 import { Divider } from 'react-native-elements'
 
-export default function Profile(props) {
+export default function Councilors(props) {
   const height = Dimensions.get('window').height
   const sheetRef = React.useRef(null)
   const [posts, setPosts] = useState([])

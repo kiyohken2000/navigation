@@ -19,7 +19,7 @@ export default function Settings(props) {
     </View>
     <BottomSheet
       ref={sheetRef}
-      snapPoints={[height*0.85, 0]}
+      snapPoints={[height*0.87, 0]}
       initialSnap={1}
       borderRadius={30}
       renderContent={() => <Sheet title={'Bottom Sheet'}/>}

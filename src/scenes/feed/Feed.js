@@ -10,9 +10,7 @@ export default function Feed(props) {
   const [articles, setArticles] = useState([])
 
   const fetch = async () => {
-    const response = await axios.get(
-      'https://asia-northeast1-news-app-udemy.cloudfunctions.net/dummy_news'
-    );
+    const response = await axios.get('https://asia-northeast1-news-app-udemy.cloudfunctions.net/dummy_news')
     setArticles(response.data.articles);
   };
 
