@@ -72,10 +72,11 @@ export default function Home(props) {
     />
     <Modal
       isVisible={isModal}
-      backdropOpacity={0.1}
+      backdropOpacity={0.3}
+      onBackdropPress={() => setModal(false)}
     >
-      <View style={styles.centeredView}>
         <BlurView intensity={95} >
+        <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.title}>Content Filter</Text>
             <ScrollView style={{width:'100%'}}>
@@ -115,8 +116,8 @@ export default function Home(props) {
             </View>
             </ScrollView>
           </View>
+        </View>
         </BlurView>
-      </View>
     </Modal>
     </>
   )

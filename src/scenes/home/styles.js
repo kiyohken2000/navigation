@@ -45,8 +45,8 @@ export default StyleSheet.create({
   modalView: {
     height: height*0.52,
     width: width*0.9,
-    backgroundColor: "white",
-    opacity: 0.99,
+    backgroundColor: "#f0f8ff",
+    opacity: 0.97,
     borderRadius: 20,
     padding: 10,
     alignItems: "center",
@@ -57,7 +57,7 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0,
     shadowRadius: 20,
-    elevation: 5
+    elevation: 5,
   },
   centeredView: {
     flex: 1,
