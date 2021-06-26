@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native'
+const height = Dimensions.get('window').height
+const width = Dimensions.get('window').width
 
 export default StyleSheet.create({
   container: {
@@ -19,8 +21,8 @@ export default StyleSheet.create({
   },
   button: {
     backgroundColor: '#788eec',
-    marginLeft: 30,
-    marginRight: 30,
+    marginLeft: 5,
+    marginRight: 5,
     marginTop: 20,
     height: 48,
     borderRadius: 5,
@@ -31,4 +33,44 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 16
   },
+  modalView: {
+    height: height*0.5,
+    width: width*0.9,
+    backgroundColor: "white",
+    opacity: 0.99,
+    borderRadius: 20,
+    padding: 10,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0,
+    shadowRadius: 20,
+    elevation: 5
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
 })
+
+export const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 4,
+    marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 10,
+    padding: 10,
+    paddingRight: 20,
+  },
+  iconContainer: {
+    top: 6,
+    right: 25,
+  },
+});

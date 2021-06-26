@@ -1,16 +1,25 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useContext } from 'react'
 import { Text, View, TouchableOpacity, ScrollView, StatusBar, useColorScheme, Dimensions } from 'react-native'
-import styles from './styles'
+import styles, {pickerSelectStyles} from './styles'
 import BottomSheet from 'reanimated-bottom-sheet'
 import Sheet from './Sheet'
 import axios from 'axios'
 import { Divider } from 'react-native-elements'
+import { UserCount } from '../../routes/navigation/drawer/Drawer'
+import Modal from 'react-native-modal'
+import { BlurView } from 'expo-blur'
+import RNPickerSelect from 'react-native-picker-select'
+import { sports, foods, colors } from './items'
 
 export default function Home(props) {
   const height = Dimensions.get('window').height
   const sheetRef = React.useRef(null)
   const [data, setData] = useState([])
   const [person, setPerson] = useState('')
+  const [sport, setSport] = useState('')
+  const [food, setFood] = useState('')
+  const [color, setColor] = useState('')
+  const { isModal, setModal } = useContext(UserCount)
 
   useEffect(() => {
    const fetchData = async () => {
@@ -54,6 +63,49 @@ export default function Home(props) {
       borderRadius={30}
       renderContent={() => <Sheet data={person}/>}
     />
+    <Modal
+      isVisible={isModal}
+      backdropOpacity={0.15}
+    >
+      <View style={styles.centeredView}>
+        <BlurView intensity={95} >
+          <View style={styles.modalView}>
+            <Text style={styles.title}>Content Filter</Text>
+            <View style={{ width: '100%', marginTop: 20 }}>
+              <Text style={styles.field}>Sport: {sport}</Text>
+              <RNPickerSelect
+                value={sport}
+                style={pickerSelectStyles}
+                onValueChange={(value) => setSport(value)}
+                items={sports}
+                placeholder={{ label: 'Select a Sports', value: '' }}
+              />
+              <Text style={styles.field}>Food: {food}</Text>
+              <RNPickerSelect
+                value={food}
+                style={pickerSelectStyles}
+                onValueChange={(value) => setFood(value)}
+                items={foods}
+                placeholder={{ label: 'Select a Foods', value: '' }}
+              />
+              <Text style={styles.field}>Color: {color}</Text>
+              <RNPickerSelect
+                value={color}
+                style={pickerSelectStyles}
+                onValueChange={(value) => setColor(value)}
+                items={colors}
+                placeholder={{ label: 'Select a Colors', value: '' }}
+              />
+            </View>
+            <View style={{ width: '100%', position: 'absolute', bottom: 20 }}>
+              <TouchableOpacity style={styles.button} onPress={() => setModal(false)} >
+                <Text style={styles.buttonText}>Apply</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </BlurView>
+      </View>
+    </Modal>
     </>
   )
 }
