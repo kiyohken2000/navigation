@@ -51,6 +51,7 @@ export default function Councilors(props) {
         keyExtractor={item => item.id.toString()}
         data={posts}
         renderItem={renderItem}
+        indicatorStyle={'black'}
       />
     )
   }, [posts])
