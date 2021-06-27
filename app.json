@@ -18,7 +18,16 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "buildNumber": "1.0.0",
+      "userInterfaceStyle": "automatic"
+    },
+    "android": {
+      "versionCode": 1,
+      "userInterfaceStyle": "automatic",
+      "permissions": [
+        "VIBRATE"
+      ]
     },
     "packagerOpts": {
       "config": "metro.config.js",

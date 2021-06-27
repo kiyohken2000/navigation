@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, ScrollView, StatusBar, useColorScheme, Di
 import styles, {pickerSelectStyles} from './styles'
 import { Global } from '../../routes/navigation/Navigation'
 import { BlurView } from 'expo-blur'
+import * as Haptics from 'expo-haptics'
 import RNPickerSelect from 'react-native-picker-select'
 import { sports, foods, colors } from './items'
 
@@ -18,6 +19,7 @@ export default function Filter(props) {
     setSport('')
     setFood('')
     setColor('')
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
   }
 
   return(

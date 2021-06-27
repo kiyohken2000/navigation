@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, ScrollView, StatusBar, useColorScheme, Di
 import { BlurView } from 'expo-blur'
 import styles from './styles'
 import { Global } from '../../routes/navigation/Navigation'
-import { Divider } from 'react-native-elements'
+import CloseBar from '../../components/CloseBar'
 
 export default function Sheet(props) {
   const data = props.data
@@ -13,7 +13,7 @@ export default function Sheet(props) {
   return (
     <BlurView intensity={95}>
       <View style={{ padding: 16, height: height*0.83, }}>
-        <Divider style={{marginLeft:140, marginRight:140, borderRadius:20}} width={5} color={'#c0c0c0'} />
+        <CloseBar />
         <Text style={styles.title}>{data.name}</Text>
         <Text style={styles.field}>{data.email}</Text>
         <Text style={styles.field}>{data.phone}</Text>

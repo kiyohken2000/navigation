@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Text, View, TouchableOpacity, ScrollView, StatusBar, useColorScheme, Dimensions } from 'react-native'
+import { Text, View, TouchableOpacity, ScrollView, Image, useColorScheme, Dimensions } from 'react-native'
 import { BlurView } from 'expo-blur'
 import styles from './styles'
-import { Divider } from 'react-native-elements'
+import CloseBar from '../../components/CloseBar'
 
 export default function Sheet(props) {
   const data = props.data
@@ -11,9 +11,20 @@ export default function Sheet(props) {
   return (
     <BlurView intensity={95} >
     <View style={{ padding: 16, height: height*0.83, }}>
-      <Divider style={{marginLeft:140, marginRight:140, borderRadius:20}} width={5} color={'#c0c0c0'} />
-        <Text style={styles.title}>{data.title}</Text>
-        <Text style={styles.field}>{data.body}</Text>
+      <CloseBar />
+        <View style={styles.itemContainer}>
+          <Image
+            source={{uri:data.url}}
+            style={{ width: 250, height: 250, alignSelf: "center", borderRadius:20 }}
+          />
+          <View style={{justifyContent:'center', alignItems:'center'}}>
+            <Text style={styles.title}>{data.title}</Text>
+            <Text style={styles.field}>{data.url}</Text>
+            <Text style={styles.field}>{data.thumbnailUrl}</Text>
+            <Text style={styles.field}>id: {data.id}</Text>
+            <Text style={styles.field}>albumId: {data.albumId}</Text>
+          </View>
+        </View>
       </View>
     </BlurView>
   )
