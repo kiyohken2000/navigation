@@ -1,14 +1,7 @@
 import React, { useEffect, useState, useCallback, useContext } from 'react'
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-} from '@react-navigation/drawer'
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, } from '@react-navigation/drawer'
 import DrawerMenu from './DrawerMenu'
-import {
-  TopTabNavigator,
-  DaysNavigator
-} from '../toptabs/TopTabs'
+import { TopTabNavigator, DaysNavigator } from '../toptabs/TopTabs'
 import { FeedNavigator, SettingsNavigator } from '../stacks'
 import { colors } from 'theme'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
