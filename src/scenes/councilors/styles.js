@@ -40,6 +40,7 @@ export default StyleSheet.create({
     marginRight: 10,
   },
   itemContainer: {
-    padding:20,
+    marginTop:20,
+    marginBottom:60
   }
 })

@@ -1,26 +1,30 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { Text, View, TouchableOpacity, ScrollView, StatusBar, useColorScheme, Dimensions } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Text, View, TouchableOpacity, ScrollView, Image, useColorScheme, Dimensions } from 'react-native'
 import { BlurView } from 'expo-blur'
 import styles from './styles'
-import { Global } from '../../routes/navigation/Navigation'
 import CloseBar from '../../components/CloseBar'
 
 export default function Sheet(props) {
   const data = props.data
   const height = Dimensions.get('window').height
-  const {sport, food, color} = useContext(Global)
 
   return (
-    <BlurView intensity={95}>
-      <View style={{ padding: 16, height: height*0.83, }}>
-        <CloseBar />
-        <Text style={styles.title}>{data.name}</Text>
-        <Text style={styles.field}>{data.email}</Text>
-        <Text style={styles.field}>{data.phone}</Text>
-        <Text style={styles.field}>{data.website}</Text>
-        <Text style={styles.field}>Sport: {sport?sport:'unselected'}</Text>
-        <Text style={styles.field}>Food: {food?food:'unselected'}</Text>
-        <Text style={styles.field}>Color: {color?color:'unselected'}</Text>
+    <BlurView intensity={95} >
+    <View style={{ padding: 16, height: height*0.83, }}>
+      <CloseBar />
+        <View style={styles.itemContainer}>
+          <Image
+            source={{uri:data.url}}
+            style={{ width: 250, height: 250, alignSelf: "center", borderRadius:20 }}
+          />
+          <View style={{justifyContent:'center', alignItems:'center'}}>
+            <Text style={styles.title}>{data.title}</Text>
+            <Text style={styles.field}>{data.url}</Text>
+            <Text style={styles.field}>{data.thumbnailUrl}</Text>
+            <Text style={styles.field}>id: {data.id}</Text>
+            <Text style={styles.field}>albumId: {data.albumId}</Text>
+          </View>
+        </View>
       </View>
     </BlurView>
   )

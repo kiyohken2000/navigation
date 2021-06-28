@@ -33,6 +33,17 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 16
   },
+  avatar: {
+    margin: 10,
+    alignSelf: "center",
+  },
+  item: {
+    marginLeft: 5,
+    marginRight: 10,
+  },
+  itemContainer: {
+    padding:20,
+  },
   footerView: {
     alignItems: "center",
     marginTop: 20

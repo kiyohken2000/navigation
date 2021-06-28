@@ -20,6 +20,14 @@ export default function Councilors(props) {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+       const result = await axios('http://192.168.10.118:8000/posts')
+       console.log(result.data)
+     }
+     fetchData();
+   }, []);
+
   function openSheet(d) {
     setPost(d)
     sheetRef.current.snapTo(0)

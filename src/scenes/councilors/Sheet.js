@@ -10,9 +10,9 @@ export default function Sheet(props) {
 
   return (
     <BlurView intensity={95} >
-    <View style={{ padding: 16, height: height*0.83, }}>
+    <View style={{ marginTop:20, height: height*0.83, }}>
       <CloseBar />
-        <View style={styles.itemContainer}>
+        <ScrollView style={styles.itemContainer}>
           <Image
             source={{uri:data.url}}
             style={{ width: 250, height: 250, alignSelf: "center", borderRadius:20 }}
@@ -23,8 +23,23 @@ export default function Sheet(props) {
             <Text style={styles.field}>{data.thumbnailUrl}</Text>
             <Text style={styles.field}>id: {data.id}</Text>
             <Text style={styles.field}>albumId: {data.albumId}</Text>
+            <Text style={styles.title}>{data.title}</Text>
+            <Text style={styles.field}>{data.url}</Text>
+            <Text style={styles.field}>{data.thumbnailUrl}</Text>
+            <Text style={styles.field}>id: {data.id}</Text>
+            <Text style={styles.field}>albumId: {data.albumId}</Text>
+            <Text style={styles.title}>{data.title}</Text>
+            <Text style={styles.field}>{data.url}</Text>
+            <Text style={styles.field}>{data.thumbnailUrl}</Text>
+            <Text style={styles.field}>id: {data.id}</Text>
+            <Text style={styles.field}>albumId: {data.albumId}</Text>
+            <Text style={styles.title}>{data.title}</Text>
+            <Text style={styles.field}>{data.url}</Text>
+            <Text style={styles.field}>{data.thumbnailUrl}</Text>
+            <Text style={styles.field}>id: {data.id}</Text>
+            <Text style={styles.field}>albumId: {data.albumId}</Text>
           </View>
-        </View>
+        </ScrollView>
       </View>
     </BlurView>
   )
